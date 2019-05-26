@@ -72,6 +72,10 @@ SizeAdjustor.prototype = {
                 finalW = clientW;
                 finalH = objH;
             }
+        } else if (adjustType === "longPageAdjust"){
+            finalW = clientW;
+            finalH = pg_Height;
+            console.log(finalW, finalH)
         }
         finalW = Math.ceil(finalW);
         finalH = Math.ceil(finalH);
@@ -79,11 +83,17 @@ SizeAdjustor.prototype = {
         return res;
     },
     adjustContainer: function() {
+        var adjustType = this.jsonData.adjustType;
+
         var clientH = document.documentElement.clientHeight;
         var clientW = document.documentElement.clientWidth;
         var container = document.getElementById("swiper_container");
         this.finalLeft = clientW / 2 - this.finalSize.width / 2;
-        this.finalTop = clientH / 2 - this.finalSize.height / 2;
+        if(adjustType === "longPageAdjust"){
+            this.finalTop = 0;
+        } else {
+            this.finalTop = clientH / 2 - this.finalSize.height / 2;
+        }
         container.style.cssText +=
             "display:block; transform-origin:left top; transform:scale(" + this.scaleX + "," + this.scaleY + "); left:" + this.finalLeft +
             "px; top:" + this.finalTop + "px";

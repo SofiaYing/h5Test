@@ -59,10 +59,14 @@ window.onloadOver = function() {
         effect: effects[effectName] ? effects[effectName] : "slide",
         direction: direction,
         speed: speed,
-        loop: isLoop,
+        loop: false,
         touchRatio: 1 / scale,
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+        freeMode : true,
     });
-    mySwiper.isLoop = isLoop;
+    mySwiper.isLoop = false;
     mySwiper.realLength = mySwiper.isLoop ? mySwiper.slides.length - 2 : mySwiper.slides.length;
     mySwiper.preRealIndex = 0;
     mySwiper.on("transitionEnd", function() {

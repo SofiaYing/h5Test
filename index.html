@@ -134,7 +134,7 @@
             position: absolute;
             display: none;
         }
-    .divshow{position:absolute;overflow:hidden;z-index:1;width:540px;height:1174px;}
+    /* .divshow{position:absolute;overflow:hidden;z-index:1;width:540px;height:1174px;} */
 .divnoshow{position:absolute;z-index:1;width:540px;height:1174px;display:none;}
 .swiper-container{width:1080px;height:2349px;}
 @keyframes arrowmove{0% {opacity: 0.3} 50% {opacity: 1} 100% {transform:translateY(-35px);opacity: 0.3}}
@@ -145,7 +145,8 @@
 </head>
 
 <body style="margin:0px;position: fixed; width: 100%; height: 100%">
-    <div id="divpar" style="margin-left:auto; margin-right:auto;position: relative;overflow:hidden;height:100vh">
+    <!-- divpar overflow:scroll positon:relative -->
+    <div id="divpar" style="margin-left:auto; margin-right:auto;position:relative;overflow:scroll;height:100vh">
         <div id="cropper_container" style="width: 100%; height: 100%;z-index: 100000; display: none;position: absolute;">
             <img src="" alt="" style="max-width: 100%">
             <button class="uiImage-btn" id="apply" type="button" style="left: 0">应用</button>
@@ -181,60 +182,74 @@
 	<div id="loadingBar" class="loadingBar"></div>
 	</div>
 	</div>
-	<input type="hidden" id="json" value="{'layout':'fixed','lastfile':'chapter-001.html','pageturning':[{'pageresult':'Traslation','pagedir':'UpAndDown','pagecircle':'true','pagetime':'1500','pageicon':'false','pagenoslide':'false'}],'adjustType':'widthAdjust','bgmhideicon':'false','bgmarea':[{'src':'Media/bgmusic0.mp3','loop':false,'autoplay':'true','start':1,'end':1},],'collect':'http://h5.founderfx.cn/external/h5/collectFormData','submitted':'http://h5.founderfx.cn/external/h5/findFormOne','loadingbar':{'bartype':'default','barpos':'30','showPercent':'false','barfgcolor':'rgba(247,99,23,1.0)','barbgcolor':'rgba(34,34,34,1.0)','promptText':'','promptSize':'21.0','promptColor':'#ffffff','fgpic':'Media/loadpage1.png','bgpic':'','bgcolor':'#333333','bgtype':'color'}}"/>
+	<input type="hidden" id="json" value="{'layout':'fixed','lastfile':'chapter-001.html','pageturning':[{'pageresult':'Traslation','pagedir':'UpAndDown','pagecircle':'true','pagetime':'1500','pageicon':'false','pagenoslide':'false'}],'adjustType':'longPageAdjust','bgmhideicon':'false','bgmarea':[{'src':'Media/bgmusic0.mp3','loop':false,'autoplay':'true','start':1,'end':1},],'collect':'http://h5.founderfx.cn/external/h5/collectFormData','submitted':'http://h5.founderfx.cn/external/h5/findFormOne','loadingbar':{'bartype':'default','barpos':'30','showPercent':'false','barfgcolor':'rgba(247,99,23,1.0)','barbgcolor':'rgba(34,34,34,1.0)','promptText':'','promptSize':'21.0','promptColor':'#ffffff','fgpic':'Media/loadpage1.png','bgpic':'','bgcolor':'#333333','bgtype':'color'}}"/>
 	<script src="scripts/sizeAdjustor.js" type="text/javascript"></script>
 	<script src="scripts/loadingbar.js" type="text/javascript"></script>
 	<script src="scripts/index_modify.js" type="text/javascript"></script>
 	<div id="divbgm" class="divbgm">
 	<img id="bgmPlay" class="imgbgm" src="Media/bgmplay.png"></img>
 	<img id="bgmPause" class="imgbgm" src="Media/bgmpause.png"></img>
-	<audio id="aubgm" src="Media/bgmusic0.mp3" preload="auto"></audio>
+	<audio id="aubgm" src="Media/bgmusic0.mp3" preload="auto" loop="true"></audio>
 	</div>
 	<div class="swiper-container" id="swiper_container" style="position:absolute;overflow:hidden;display:none;" data-width="1080" data-height="2349">
 		<div class="swiper-wrapper">
-<div id="page1" class="divshow swiper-slide">
-<div  class="p1para1 p1textdiv0">
-	<div id="pGrp-2" class="p1pGrpDiv-FxLi2">
-		<div class="">
-			<div class="p1imagediv4">
-				<img class="p1image5" src="Media/chapter-001image1.jpg" id="imageItem-4" alt="Media/chapter-001image1.jpg"></img>
-			</div>
-		</div>
-		<div title="Animation" id="si_8000019A" style="left:-42.5196850393701px;top:-42.5198919685038px;height:2349px;width:1080px;position:absolute;pointer-events:none;">
-			<div style="left:388.655px;top:400.703px;height:125.747px;width:302.689px;position:absolute;opacity:0.0;">
-				<div title="groupItem" style="width:100%;height:100%;">
-					<div style="width:100%;height:100%;">
-						<img src="Media/chapter-001image2.png" id="imageItem-5" alt="Media/chapter-001image2.png" style="width:100%;height:100%;"></img>
-					</div>
-				</div>
-			</div>
-			<input type="hidden" name="json" value="{&quot;mutualExclusion&quot;:&quot;true&quot;,&quot;displayCloseButton&quot;:&quot;false&quot;,&quot;displayFirstImage&quot;:&quot;false&quot;,&quot;iconFlicker&quot;:&quot;false&quot;,&quot;slideshow&quot;:[{&quot;playOnPageTurn&quot;:&quot;&quot;,&quot;playDelay&quot;:&quot;&quot;,&quot;playInterval&quot;:&quot;&quot;,&quot;effect&quot;:&quot;&quot;,&quot;slideSpeed&quot;:&quot;&quot;,&quot;slideDirection&quot;:&quot;&quot;,&quot;wipeEnable&quot;:&quot;&quot;,&quot;fullScreen&quot;:&quot;&quot;}],&quot;states&quot;:[{&quot;bgaudio&quot;:&quot;&quot;,&quot;animations&quot;:[{&quot;type&quot;:&quot;toAppearance-0&quot;,&quot;uid&quot;:&quot;0-0&quot;,&quot;effect&quot;:&quot;fall&quot;,&quot;direction&quot;:&quot;bottom&quot;,&quot;playDelay&quot;:&quot;0&quot;,&quot;playTime&quot;:&quot;4&quot;}]}]}"></input>
-		</div>
-		<div title="Animation" id="si_800001D1" style="left:-42.5196850393701px;top:-42.5198919685038px;height:2349px;width:1080px;position:absolute;pointer-events:none;">
-			<div style="left:317.876px;top:2098.293px;height:125.747px;width:444.247px;position:absolute;">
-				<div title="groupItem" style="width:100%;height:100%;">
-					<div style="width:100%;height:100%;">
-						<img src="Media/chapter-001image3.png" id="imageItem-6" alt="Media/chapter-001image3.png" style="width:100%;height:100%;"></img>
-					</div>
-				</div>
-			</div>
-			<input type="hidden" name="json" value="{&quot;mutualExclusion&quot;:&quot;true&quot;,&quot;displayCloseButton&quot;:&quot;false&quot;,&quot;displayFirstImage&quot;:&quot;false&quot;,&quot;iconFlicker&quot;:&quot;false&quot;,&quot;slideshow&quot;:[{&quot;playOnPageTurn&quot;:&quot;&quot;,&quot;playDelay&quot;:&quot;&quot;,&quot;playInterval&quot;:&quot;&quot;,&quot;effect&quot;:&quot;&quot;,&quot;slideSpeed&quot;:&quot;&quot;,&quot;slideDirection&quot;:&quot;&quot;,&quot;wipeEnable&quot;:&quot;&quot;,&quot;fullScreen&quot;:&quot;&quot;}],&quot;states&quot;:[{&quot;bgaudio&quot;:&quot;&quot;,&quot;animations&quot;:[{&quot;type&quot;:&quot;toAppearance-0&quot;,&quot;uid&quot;:&quot;1-0&quot;,&quot;effect&quot;:&quot;pop&quot;,&quot;direction&quot;:&quot;bottom&quot;,&quot;playDelay&quot;:&quot;0&quot;,&quot;playTime&quot;:&quot;4&quot;}]}]}"></input>
-		</div>
-	</div>
-</div>
+            <div id="page1" class="divshow swiper-slide">
+                <div  class="p1para1 p1textdiv0">
+	                <div id="pGrp-2" class="p1pGrpDiv-FxLi2">
+                        <div class="">
+                            <div class="p1imagediv4">
+                                <img class="p1image5" src="Media/chapter-001image1.jpg" id="imageItem-4" alt="Media/chapter-001image1.jpg"></img>
+                            </div>  
+                        </div>
 
-</div>
-		</div>
+                        <div title="Animation" id="si_8000019A" style="left:-42.5196850393701px;top:-42.5198919685038px;height:2349px;width:1080px;position:absolute;pointer-events:none;">
+                            <div style="left:388.655px;top:400.703px;height:125.747px;width:302.689px;position:absolute;opacity:0.0;">
+                                <div title="groupItem" style="width:100%;height:100%;">
+                                    <div style="width:100%;height:100%;">
+                                        <img src="Media/chapter-001image2.png" id="imageItem-5" alt="Media/chapter-001image2.png" style="width:100%;height:100%;"></img>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="json" value="{&quot;mutualExclusion&quot;:&quot;true&quot;,&quot;displayCloseButton&quot;:&quot;false&quot;,&quot;displayFirstImage&quot;:&quot;false&quot;,&quot;iconFlicker&quot;:&quot;false&quot;,&quot;slideshow&quot;:[{&quot;playOnPageTurn&quot;:&quot;&quot;,&quot;playDelay&quot;:&quot;&quot;,&quot;playInterval&quot;:&quot;&quot;,&quot;effect&quot;:&quot;&quot;,&quot;slideSpeed&quot;:&quot;&quot;,&quot;slideDirection&quot;:&quot;&quot;,&quot;wipeEnable&quot;:&quot;&quot;,&quot;fullScreen&quot;:&quot;&quot;}],&quot;states&quot;:[{&quot;bgaudio&quot;:&quot;&quot;,&quot;animations&quot;:[{&quot;type&quot;:&quot;toAppearance-0&quot;,&quot;uid&quot;:&quot;0-0&quot;,&quot;effect&quot;:&quot;fall&quot;,&quot;direction&quot;:&quot;bottom&quot;,&quot;playDelay&quot;:&quot;0&quot;,&quot;playTime&quot;:&quot;4&quot;}]}]}"></input>
+                        </div>
+
+                        <div title="Animation" id="si_800001D1" style="left:-42.5196850393701px;top:-42.5198919685038px;height:2349px;width:1080px;position:absolute;pointer-events:none;">
+
+                            <div style="left:317.876px;top:2098.293px;height:125.747px;width:444.247px;position:absolute;">
+
+                                <div title="groupItem" style="width:100%;height:100%;">
+
+                                    <div style="width:100%;height:100%;">
+
+                                        <img src="Media/chapter-001image3.png" id="imageItem-6" alt="Media/chapter-001image3.png" style="width:100%;height:100%;"></img>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <input type="hidden" name="json" value="{&quot;mutualExclusion&quot;:&quot;true&quot;,&quot;displayCloseButton&quot;:&quot;false&quot;,&quot;displayFirstImage&quot;:&quot;false&quot;,&quot;iconFlicker&quot;:&quot;false&quot;,&quot;slideshow&quot;:[{&quot;playOnPageTurn&quot;:&quot;&quot;,&quot;playDelay&quot;:&quot;&quot;,&quot;playInterval&quot;:&quot;&quot;,&quot;effect&quot;:&quot;&quot;,&quot;slideSpeed&quot;:&quot;&quot;,&quot;slideDirection&quot;:&quot;&quot;,&quot;wipeEnable&quot;:&quot;&quot;,&quot;fullScreen&quot;:&quot;&quot;}],&quot;states&quot;:[{&quot;bgaudio&quot;:&quot;&quot;,&quot;animations&quot;:[{&quot;type&quot;:&quot;toAppearance-0&quot;,&quot;uid&quot;:&quot;1-0&quot;,&quot;effect&quot;:&quot;pop&quot;,&quot;direction&quot;:&quot;bottom&quot;,&quot;playDelay&quot;:&quot;0&quot;,&quot;playTime&quot;:&quot;4&quot;}]}]}"></input>
+
+                        </div>
+
+	                </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="swiper-scrollbar"></div>
 	</div>
 
-
-<div id="wx_pic" style="margin:0 auto;overflow:hidden;width:0;height:0;">
-<img src="Media/cover.jpg"/>
-</div><button id="prepage" style="display:none;">上一页</button>
-        <button id="nextpage" style="display:none;">下一页</button>
-        <div id="divpre" style="position:absolute;left:0%;width:10%;top:10%;height:90%;z-index:1;display:none;"></div>
-        <div id="divnext" style="position:absolute;left:90%;width:10%;top:10%;height:90%;z-index:1;display:none;"></div>
+    <div id="wx_pic" style="margin:0 auto;overflow:hidden;width:0;height:0;">
+    <img src="Media/cover.jpg"/>
     </div>
+    <button id="prepage" style="display:none;">上一页</button>
+    <button id="nextpage" style="display:none;">下一页</button>
+    <div id="divpre" style="position:absolute;left:0%;width:10%;top:10%;height:90%;z-index:1;display:none;"></div>
+    <div id="divnext" style="position:absolute;left:90%;width:10%;top:10%;height:90%;z-index:1;display:none;"></div>
+</div>
     <script src="scripts/swiper.min.js" type="text/javascript"></script>
     <script src="./scripts/options.js"></script>
 </body>

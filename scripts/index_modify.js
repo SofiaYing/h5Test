@@ -22,6 +22,7 @@ window.onloadOver = function() {
     bgmDiv.style.left = (sizeAdjustor.finalLeft + sizeAdjustor.finalSize.width - 50) + "px";
 
     var jsonData = sizeAdjustor.jsonData;
+    // 长页面 isLoop为false
     var isLoop = jsonData.pageturning[0].pagecircle === "true";
     var direction = jsonData.pageturning[0].pagedir === "UpAndDown" ? "vertical" : "horizontal";
     var effectName = jsonData.pageturning[0].pageresult;
@@ -59,14 +60,10 @@ window.onloadOver = function() {
         effect: effects[effectName] ? effects[effectName] : "slide",
         direction: direction,
         speed: speed,
-        loop: false,
+        loop: isLoop,
         touchRatio: 1 / scale,
-        scrollbar: {
-            el: '.swiper-scrollbar',
-        },
-        freeMode : true,
     });
-    mySwiper.isLoop = false;
+    mySwiper.isLoop = isLoop;
     mySwiper.realLength = mySwiper.isLoop ? mySwiper.slides.length - 2 : mySwiper.slides.length;
     mySwiper.preRealIndex = 0;
     mySwiper.on("transitionEnd", function() {

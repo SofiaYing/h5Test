@@ -74,8 +74,7 @@ SizeAdjustor.prototype = {
             }
         } else if (adjustType === "longPageAdjust"){
             finalW = clientW;
-            finalH = pg_Height;
-            console.log(finalW, finalH)
+            finalH = pg_Height * clientW/pg_Width;
         }
         finalW = Math.ceil(finalW);
         finalH = Math.ceil(finalH);

@@ -7,11 +7,12 @@ function addArrowClickListener(arrow) {
 function removeAttrInSwiperDuplicate() {
     $(".swiper-slide-duplicate").find("*[id], *[name], *[title]").removeAttr("id").removeAttr("name").removeAttr("title");
 }
+
 function removeSwiping() {
     var slides = mySwiper.slides;
     slides = Array.prototype.slice.call(slides);
     slides.forEach(function(el) {
-        el.classList.add("swiper-no-swiping");
+        // el.classList.add("swiper-no-swiping");
     });
 }
 
@@ -40,79 +41,78 @@ window.onloadOver = function() {
         "3DTurn": "cube"
     };
 
-    window.onmessage = function(event) {
-        var data = eval('(' + event.data + ')');
-        if(data.act === 'slidto') {
-            var index = parseInt(data.val);
-            //swiper在loop=true模式下,页面索引会加1
-            if (isLoop) index++;
-            mySwiper.slideTo(index, 0);
-        }
-        else {
-            window.wxuserid = data.val;
-        }
-    }
+    // window.onmessage = function(event) {
+    //         var data = eval('(' + event.data + ')');
+    //         if (data.act === 'slidto') {
+    //             var index = parseInt(data.val);
+    //             //swiper在loop=true模式下,页面索引会加1
+    //             if (isLoop) index++;
+    //             mySwiper.slideTo(index, 0);
+    //         } else {
+    //             window.wxuserid = data.val;
+    //         }
+    //     }
     //实例化一个FXH5对象并对第一页reset
     window.fx = new FXH5(fx_options);
     fx.reset("0");
     //实力化一个swiper对象并初始化
-    window.mySwiper = new Swiper('.swiper-container', {
-        effect: effects[effectName] ? effects[effectName] : "slide",
-        direction: direction,
-        speed: speed,
-        loop: isLoop,
-        touchRatio: 1 / scale,
-    });
-    mySwiper.isLoop = isLoop;
-    mySwiper.realLength = mySwiper.isLoop ? mySwiper.slides.length - 2 : mySwiper.slides.length;
-    mySwiper.preRealIndex = 0;
-    mySwiper.on("transitionEnd", function() {
-        var self = this;
-        //当循环模式下页面到达最后复制的循环页，跳转到真实第一页
-        if (self.isLoop && self.activeIndex === self.realLength + 1) {
-            self.slideTo(1, 0);
-            return;
-        }
-        //当循环模式下页面到达第一个复制的循环页，跳转到真实最后一页
-        else if (self.isLoop && self.activeIndex === 0) {
-            self.slideTo(self.realLength, 0);
-            return;
-        }
-    });
+    // window.mySwiper = new Swiper('.swiper-container', {
+    //     effect: effects[effectName] ? effects[effectName] : "slide",
+    //     direction: direction,
+    //     speed: speed,
+    //     loop: isLoop,
+    //     touchRatio: 1 / scale,
+    // });
+    // mySwiper.isLoop = isLoop;
+    // mySwiper.realLength = mySwiper.isLoop ? mySwiper.slides.length - 2 : mySwiper.slides.length;
+    // mySwiper.preRealIndex = 0;
+    // mySwiper.on("transitionEnd", function() {
+    //     var self = this;
+    //     //当循环模式下页面到达最后复制的循环页，跳转到真实第一页
+    //     if (self.isLoop && self.activeIndex === self.realLength + 1) {
+    //         self.slideTo(1, 0);
+    //         return;
+    //     }
+    //     //当循环模式下页面到达第一个复制的循环页，跳转到真实最后一页
+    //     else if (self.isLoop && self.activeIndex === 0) {
+    //         self.slideTo(self.realLength, 0);
+    //         return;
+    //     }
+    // });
 
-    mySwiper.on("slideChange", function() {
-        var self = this;
-        if(self.isLoop && (self.activeIndex === 0 || self.activeIndex === self.realLength + 1)) return;
-        bgmController.controlAutoBgm(self.realIndex, self.preRealIndex);
-        fx.destroy(String(self.preRealIndex));
-        fx.reset(String(self.realIndex));
-        self.preRealIndex = self.realIndex;
-    }, false);
-    var evt = "resize";
-    var isWeixin = is_weixin();
-    window.addEventListener(evt, function() {
-        window.sizeAdjustor.update();
-        //alert(sizeAdjustor.clientW + "&&" + sizeAdjustor.clientH);
-        window.sizeAdjustor.adjustContainer();
-        var scale = window.sizeAdjustor.scale;
-        mySwiper.touchRatio = 1 / scale;
-        var videoItems = window.fx.getItemsByCtrlName("video");
-        if(videoItems !== null){
-            videoItems.forEach(function(curItem){
-                curItem.process();
-            })
-        }
-    });
+    // mySwiper.on("slideChange", function() {
+    //     var self = this;
+    //     if (self.isLoop && (self.activeIndex === 0 || self.activeIndex === self.realLength + 1)) return;
+    //     bgmController.controlAutoBgm(self.realIndex, self.preRealIndex);
+    //     fx.destroy(String(self.preRealIndex));
+    //     fx.reset(String(self.realIndex));
+    //     self.preRealIndex = self.realIndex;
+    // }, false);
+    // var evt = "resize";
+    // var isWeixin = is_weixin();
+    // window.addEventListener(evt, function() {
+    //     window.sizeAdjustor.update();
+    //     //alert(sizeAdjustor.clientW + "&&" + sizeAdjustor.clientH);
+    //     window.sizeAdjustor.adjustContainer();
+    //     var scale = window.sizeAdjustor.scale;
+    //     mySwiper.touchRatio = 1 / scale;
+    //     var videoItems = window.fx.getItemsByCtrlName("video");
+    //     if (videoItems !== null) {
+    //         videoItems.forEach(function(curItem) {
+    //             curItem.process();
+    //         })
+    //     }
+    // });
 
-    (function() {
-        var arrow = document.getElementById("floatArrow");
-        if (showSwipIcon) addArrowClickListener(arrow);
-        else {
-            arrow.style.display = "none";
-        }
-        if (noSwiping) removeSwiping();
-        removeAttrInSwiperDuplicate();
-    })();
+    // (function() {
+    //     var arrow = document.getElementById("floatArrow");
+    //     if (showSwipIcon) addArrowClickListener(arrow);
+    //     else {
+    //         arrow.style.display = "none";
+    //     }
+    //     if (noSwiping) removeSwiping();
+    //     removeAttrInSwiperDuplicate();
+    // })();
 
 
 };
@@ -146,7 +146,7 @@ window.onloadOver = function() {
                 audio.pause();
             }
             global.isAgentAudioEnded = function(localAudio) {
-            	return localAudio ? audio.ended || audio.paused : true;
+                return localAudio ? audio.ended || audio.paused : true;
             }
             global.playBgmAudio = function(bgmAudio) {
                 var count = 0;
@@ -165,7 +165,7 @@ window.onloadOver = function() {
 
         } else {
             global.playAgentAudio = function(localAudio) {
-            	global.agentAudioEnded = false;
+                global.agentAudioEnded = false;
                 doExecBgAudio("au1", "play", localAudio.src, localAudio.loop);
                 return true;
             }
@@ -173,10 +173,10 @@ window.onloadOver = function() {
                 doExecBgAudio("au1", "pause", localAudio.src, localAudio.loop);
             }
             global.isAgentAudioEnded = function(localAudio) {
-            	return localAudio ? global.agentAudioEnded : true;
+                return localAudio ? global.agentAudioEnded : true;
             }
             global.playBgmAudio = function(bgmAudio) {
-            	global.bgmAudioEnded = false;
+                global.bgmAudioEnded = false;
                 doExecBgAudio("aubgm", "play", bgmAudio.src, bgmAudio.loop);
                 return true;
             }
@@ -193,8 +193,8 @@ window.onloadOver = function() {
             localAudio.pause();
         }
         global.isAgentAudioEnded = function(localAudio) {
-            	return localAudio ? localAudio.ended || localAudio.paused : true;
-            }
+            return localAudio ? localAudio.ended || localAudio.paused : true;
+        }
         global.playBgmAudio = function(bgmAudio) {
             bgmAudio.play();
             return !bgmAudio.paused;

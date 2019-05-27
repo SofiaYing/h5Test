@@ -4,15 +4,11 @@ function addArrowClickListener(arrow) {
     }, false);
 }
 
-function removeAttrInSwiperDuplicate() {
-    $(".swiper-slide-duplicate").find("*[id], *[name], *[title]").removeAttr("id").removeAttr("name").removeAttr("title");
-}
-
 function removeSwiping() {
     var slides = mySwiper.slides;
     slides = Array.prototype.slice.call(slides);
     slides.forEach(function(el) {
-        el.classList.add("swiper-no-swiping");
+        // el.classList.add("swiper-no-swiping");
     });
 }
 
@@ -23,11 +19,6 @@ window.onloadOver = function() {
     bgmDiv.style.left = (sizeAdjustor.finalLeft + sizeAdjustor.finalSize.width - 50) + "px";
 
     var jsonData = sizeAdjustor.jsonData;
-    var isLoop = jsonData.pageturning[0].pagecircle === "true";
-    var direction = jsonData.pageturning[0].pagedir === "UpAndDown" ? "vertical" : "horizontal";
-    var effectName = jsonData.pageturning[0].pageresult;
-    var speed = parseInt(jsonData.pageturning[0].pagetime);
-    var noSwiping = jsonData.pageturning[0].pagenoslide === "true";
     var showSwipIcon = jsonData.pageturning[0].pageicon === "true";
     window.dataController = new DataController(jsonData);
     window.bgmController = new BGMController(jsonData.bgmarea, jsonData.bgmhideicon);
@@ -40,79 +31,36 @@ window.onloadOver = function() {
         "3DTurn": "cube"
     };
 
-    window.onmessage = function(event) {
-            var data = eval('(' + event.data + ')');
-            if (data.act === 'slidto') {
-                var index = parseInt(data.val);
-                //swiper在loop=true模式下,页面索引会加1
-                if (isLoop) index++;
-                mySwiper.slideTo(index, 0);
-            } else {
-                window.wxuserid = data.val;
-            }
-        }
-        //实例化一个FXH5对象并对第一页reset
+
+    //实例化一个FXH5对象并对第一页reset
     window.fx = new FXH5(fx_options);
-    fx.reset("0");
-    //实力化一个swiper对象并初始化
-    window.mySwiper = new Swiper('.swiper-container', {
-        effect: effects[effectName] ? effects[effectName] : "slide",
-        direction: direction,
-        speed: speed,
-        loop: isLoop,
-        touchRatio: 1 / scale,
-    });
-    mySwiper.isLoop = isLoop;
-    mySwiper.realLength = mySwiper.isLoop ? mySwiper.slides.length - 2 : mySwiper.slides.length;
-    mySwiper.preRealIndex = 0;
-    mySwiper.on("transitionEnd", function() {
-        var self = this;
-        //当循环模式下页面到达最后复制的循环页，跳转到真实第一页
-        if (self.isLoop && self.activeIndex === self.realLength + 1) {
-            self.slideTo(1, 0);
-            return;
-        }
-        //当循环模式下页面到达第一个复制的循环页，跳转到真实最后一页
-        else if (self.isLoop && self.activeIndex === 0) {
-            self.slideTo(self.realLength, 0);
-            return;
-        }
+    // fx.reset("0");
+
+    // 监听视窗
+    const intersectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((item) => {
+            if (item.isIntersecting) {
+                fx.reset('0')
+
+            } else {
+
+            }
+        })
     });
 
-    mySwiper.on("slideChange", function() {
-        var self = this;
-        if (self.isLoop && (self.activeIndex === 0 || self.activeIndex === self.realLength + 1)) return;
-        bgmController.controlAutoBgm(self.realIndex, self.preRealIndex);
-        fx.destroy(String(self.preRealIndex));
-        console.log(String(self.preRealIndex))
-        fx.reset(String(self.realIndex));
-        self.preRealIndex = self.realIndex;
-    }, false);
-    var evt = "resize";
-    var isWeixin = is_weixin();
-    window.addEventListener(evt, function() {
-        window.sizeAdjustor.update();
-        //alert(sizeAdjustor.clientW + "&&" + sizeAdjustor.clientH);
-        window.sizeAdjustor.adjustContainer();
-        var scale = window.sizeAdjustor.scale;
-        mySwiper.touchRatio = 1 / scale;
-        var videoItems = window.fx.getItemsByCtrlName("video");
-        if (videoItems !== null) {
-            videoItems.forEach(function(curItem) {
-                curItem.process();
-            })
-        }
-    });
+    // 监听每一个有动画内包含的div元素是否进入视窗
+    $("div[title='Animation']").children('div').each(function(index, item) {
+        intersectionObserver.observe(item)
+    })
 
-    (function() {
-        var arrow = document.getElementById("floatArrow");
-        if (showSwipIcon) addArrowClickListener(arrow);
-        else {
-            arrow.style.display = "none";
-        }
-        if (noSwiping) removeSwiping();
-        removeAttrInSwiperDuplicate();
-    })();
+    // (function() {
+    //     var arrow = document.getElementById("floatArrow");
+    //     if (showSwipIcon) addArrowClickListener(arrow);
+    //     else {
+    //         arrow.style.display = "none";
+    //     }
+
+    // })();
 
 
 };

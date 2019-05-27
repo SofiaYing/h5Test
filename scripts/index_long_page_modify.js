@@ -34,7 +34,7 @@ window.onloadOver = function() {
 
     //实例化一个FXH5对象并对第一页reset
     window.fx = new FXH5(fx_options);
-    // fx.reset("0");
+    fx.reset("0");
 
     // 监听视窗
     const intersectionObserver = new IntersectionObserver((entries) => {
@@ -43,7 +43,7 @@ window.onloadOver = function() {
                 fx.reset('0')
 
             } else {
-
+                fx.destroy('0')
             }
         })
     });

@@ -41,14 +41,13 @@
                 var iLenth = client.children().length;
                 for (var idx = 0; idx < iLenth; idx++) {
                     var jsonnode = client.children()[idx];
-                    console.log('111112222222222', client, client.children())
+
                     if (jsonnode.nodeName.toLowerCase() === 'input') {
                         var demoAnimation = client.children()[idx_Animation];
                         var itemTop = parseInt(demoAnimation.style.top);
                         var itemLeft = parseInt(demoAnimation.style.left);
                         var spaceW = $(demoAnimation).width();
                         var spaceH = $(demoAnimation).height();
-                        console.log(demoAnimation, itemTop, itemLeft, spaceW, spaceH)
                         if ($(demoAnimation).is(":animated")) $(demoAnimation).stop(true, true);
                         if (!$(demoAnimation).data("itemTop")) $(demoAnimation).data("itemTop", itemTop);
                         if (!$(demoAnimation).data("itemLeft")) $(demoAnimation).data("itemLeft", itemLeft);

@@ -1,8 +1,8 @@
-function addArrowClickListener(arrow) {
-    arrow.addEventListener("click", function() {
-        mySwiper.slideNext();
-    }, false);
-}
+// function addArrowClickListener(arrow) {
+//     arrow.addEventListener("click", function() {
+//         mySwiper.slideNext();
+//     }, false);
+// }
 
 window.onloadOver = function() {
     //长页面适配

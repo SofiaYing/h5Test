@@ -37,6 +37,7 @@ window.onloadOver = function() {
     // fx.reset("0");
 
     (function($) {
+        alert(1)
         $.fn.extend({
             animateCss: function(animationName) {
                 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -64,6 +65,7 @@ window.onloadOver = function() {
     console.log('divanimation', $("div[title='Animation']"))
         // 监听每一个有动画内包含的div元素是否进入视窗
     $("div[title='Animation']").children('div').each(function(index, item) {
+        alert(2)
         intersectionObserver.observe(item)
     })
 

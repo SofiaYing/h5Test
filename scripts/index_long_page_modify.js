@@ -56,6 +56,7 @@ window.onloadOver = function() {
                 var value = eval('(' + n[0].value + ')')
                     // value.states[0].animations[0].effect
                 $(item.target).animateCss('animated ' + 'fadeIn')
+                alert($(item.target).attr('class'))
 
             }
         })

@@ -4,14 +4,6 @@ function addArrowClickListener(arrow) {
     }, false);
 }
 
-function removeSwiping() {
-    var slides = mySwiper.slides;
-    slides = Array.prototype.slice.call(slides);
-    slides.forEach(function(el) {
-        // el.classList.add("swiper-no-swiping");
-    });
-}
-
 window.onloadOver = function() {
     window.sizeAdjustor.adjustContainer();
     var scale = window.sizeAdjustor.scaleX;
@@ -23,47 +15,48 @@ window.onloadOver = function() {
     window.dataController = new DataController(jsonData);
     window.bgmController = new BGMController(jsonData.bgmarea, jsonData.bgmhideicon);
     bgmController.controlAutoBgm(0, undefined);
-    var effects = {
-        "Traslation": "slide",
-        "Fad": "fade",
-        "CoverFlow": "coverflow",
-        "Overturn": "flip",
-        "3DTurn": "cube"
-    };
+    // var effects = {
+    //     "Traslation": "slide",
+    //     "Fad": "fade",
+    //     "CoverFlow": "coverflow",
+    //     "Overturn": "flip",
+    //     "3DTurn": "cube"
+    // };
 
 
     //实例化一个FXH5对象并对第一页reset
     window.fx = new FXH5(fx_options);
     // fx.reset("0");
 
-    (function($) {
-        $.fn.extend({
-            animateCss: function(animationName) {
-                var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-                $(this).addClass('animated ' + animationName).one(animationEnd, function() {
-                    $(this).removeClass('animated ' + animationName);
-                });
-            }
-        });
-    })(jQuery);
+    // (function($) {
+    //     $.fn.extend({
+    //         animateCss: function(animationName) {
+    //             var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+    //             $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+    //                 $(this).removeClass('animated ' + animationName);
+    //             });
+    //         }
+    //     });
+    // })(jQuery);
 
-    // 监听视窗
-    const intersectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((item) => {
-            if (item.isIntersecting) {
-                // fx.reset('0')
-                var n = $(item.target).parent().children('input')
-                var value = eval('(' + n[0].value + ')')
-                    // value.states[0].animations[0].effect
-                $(item.target).animateCss('animated ' + 'fadeIn')
-            }
-        })
-    });
-    console.log('divanimation', $("div[title='Animation']"))
-        // 监听每一个有动画内包含的div元素是否进入视窗
-    $("div[title='Animation']").children('div').each(function(index, item) {
-        intersectionObserver.observe(item)
-    })
+    // // 监听视窗
+    // const intersectionObserver = new IntersectionObserver((entries) => {
+    //     entries.forEach((item) => {
+    //         if (item.isIntersecting) {
+    //             // fx.reset('0')
+    //             var inputNode = $(item.target).parent().children('input')
+    //             var value = eval('(' + inputNode[0].value + ')')
+    //             console.log('inputValue', value)
+    //                 // value.states[0].animations[0].effect
+    //             $(item.target).animateCss('animated ' + 'fadeIn')
+    //         }
+    //     })
+    // });
+    // console.log('divanimation', $("div[title='Animation']"))
+    //     // 监听每一个有动画内包含的div元素是否进入视窗
+    // $("div[title='Animation']").children('div').each(function(index, item) {
+    //     intersectionObserver.observe(item)
+    // })
 
     // (function() {
     //     var arrow = document.getElementById("floatArrow");

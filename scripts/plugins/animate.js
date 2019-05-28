@@ -1,5 +1,5 @@
 (function() {
-    FX.plugins["animation"] = (function(id, option) {
+    FX.plugins["animate"] = (function(id, option) {
 
         // 监听视窗
         // const intersectionObserver = new IntersectionObserver((entries) => {
@@ -42,17 +42,17 @@
         var ismobile = is_mobile();
         var stopId; //动画播放setTimeout的停止Id
         // 对象
-        var Animation = function(id, option) {
+        var Animate = function(id, option) {
             this.$target = $("#" + id);
             this.init(id, option);
         };
 
         // 继承接口
-        FX.utils.inherit(FXInterface, Animation);
+        FX.utils.inherit(FXInterface, Animate);
 
         //组件初始化
-        Animation.prototype.init = function(id, option) {
-            // each animation
+        Animate.prototype.init = function(id, option) {
+            // each Animate
             var page = this.$target.parents(".swiper-slide");
             var aniInPage = page.find("div[title='Animation']");
             var firstAniInPage = aniInPage.eq(0);
@@ -232,7 +232,7 @@
         };
 
         //重置数据
-        Animation.prototype.reset = function(option) {
+        Animate.prototype.reset = function(option) {
             //进入,单击
             console.log('animation_list', animation_list)
             for (var i = 0; i < animation_list.length; i++) {
@@ -313,7 +313,7 @@
         };
 
         //数据重置
-        Animation.prototype.destroy = function() {
+        Animate.prototype.destroy = function() {
             clearTimeout(stopId);
             for (var i = 0; i < animation_list.length; i++) {
                 if (!animation_list[i])
@@ -470,6 +470,6 @@
             }
         }
 
-        return new Animation(id, option);
+        return new Animate(id, option);
     });
 })();

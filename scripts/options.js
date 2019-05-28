@@ -1,6 +1,6 @@
 ﻿var fx_options = {
-    "0": [{ container: "si_8000019A", plugin: "animation", option: {} },
-        { container: "si_800001D1", plugin: "animation", option: {} },
+    "0": [{ container: "si_8000019A", plugin: "animate", option: {} },
+        { container: "si_800001D1", plugin: "animate", option: {} },
     ],
 };
 (function() {

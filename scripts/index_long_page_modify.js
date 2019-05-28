@@ -37,7 +37,6 @@ window.onloadOver = function() {
     // fx.reset("0");
 
     (function($) {
-        alert(1)
         $.fn.extend({
             animateCss: function(animationName) {
                 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
@@ -57,15 +56,12 @@ window.onloadOver = function() {
                 var value = eval('(' + n[0].value + ')')
                     // value.states[0].animations[0].effect
                 $(item.target).animateCss('animated ' + 'fadeIn')
-                alert($(item.target).attr('class'))
-
             }
         })
     });
     console.log('divanimation', $("div[title='Animation']"))
         // 监听每一个有动画内包含的div元素是否进入视窗
     $("div[title='Animation']").children('div').each(function(index, item) {
-        alert(2)
         intersectionObserver.observe(item)
     })
 

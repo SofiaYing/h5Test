@@ -41,12 +41,14 @@
                 var iLenth = client.children().length;
                 for (var idx = 0; idx < iLenth; idx++) {
                     var jsonnode = client.children()[idx];
+                    console.log('111112222222222', client, client.children())
                     if (jsonnode.nodeName.toLowerCase() === 'input') {
                         var demoAnimation = client.children()[idx_Animation];
                         var itemTop = parseInt(demoAnimation.style.top);
                         var itemLeft = parseInt(demoAnimation.style.left);
                         var spaceW = $(demoAnimation).width();
                         var spaceH = $(demoAnimation).height();
+                        console.log(demoAnimation, itemTop, itemLeft, spaceW, spaceH)
                         if ($(demoAnimation).is(":animated")) $(demoAnimation).stop(true, true);
                         if (!$(demoAnimation).data("itemTop")) $(demoAnimation).data("itemTop", itemTop);
                         if (!$(demoAnimation).data("itemLeft")) $(demoAnimation).data("itemLeft", itemLeft);
@@ -55,6 +57,7 @@
                         // no json
                         var jsonStr = jsonnode.value;
                         var data = eval('(' + jsonStr + ')');
+                        console.log('data', data)
                         for (var i = idx_Animation; i < (idx_Animation + data.states.length); i++) {
                             var demo = client.children().eq(i);
                             var ctPopup = demo.parents("div[title='PopupContent']").length;
@@ -200,6 +203,7 @@
         //重置数据
         Animation.prototype.reset = function(option) {
             //进入,单击
+            console.log('animation_list', animation_list)
             for (var i = 0; i < animation_list.length; i++) {
                 if (!animation_list[i])
                     continue;
@@ -282,7 +286,6 @@
                     continue;
                 for (var j = 0; j < animation_list[i].length; j++) {
                     var data = animation_list[i][j];
-                    console.log(data, data.Demo)
                     if (data.Demo.is(":animated"))
                         data.Demo.stop(true, true);
                 }

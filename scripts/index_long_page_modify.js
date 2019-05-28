@@ -34,21 +34,34 @@ window.onloadOver = function() {
 
     //实例化一个FXH5对象并对第一页reset
     window.fx = new FXH5(fx_options);
-    fx.reset("0");
+    // fx.reset("0");
+
+    (function($) {
+        $.fn.extend({
+            animateCss: function(animationName) {
+                var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+                    $(this).removeClass('animated ' + animationName);
+                });
+            }
+        });
+    })(jQuery);
 
     // 监听视窗
     const intersectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((item) => {
             if (item.isIntersecting) {
-                fx.reset('0')
+                // fx.reset('0')
+                var n = $(item.target).parent().children('input')
+                var value = eval('(' + n[0].value + ')')
+                    // value.states[0].animations[0].effect
+                $(item.target).animateCss('animated ' + 'fadeIn')
 
-            } else {
-                fx.destroy('0')
             }
         })
     });
-
-    // 监听每一个有动画内包含的div元素是否进入视窗
+    console.log('divanimation', $("div[title='Animation']"))
+        // 监听每一个有动画内包含的div元素是否进入视窗
     $("div[title='Animation']").children('div').each(function(index, item) {
         intersectionObserver.observe(item)
     })

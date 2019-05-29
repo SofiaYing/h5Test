@@ -108,7 +108,7 @@
                     // $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
 
                     // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).parent().animateCss('fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).parent().animateCss('fadeInLeft ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
                     // $(item.target).removeClass('animated fadeInUp')

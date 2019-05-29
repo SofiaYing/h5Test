@@ -97,7 +97,7 @@
                     console.log('inputValue', value)
                     $(item.target).parent().css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
                         // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).parent().animateCss('animated fadeIn ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).parent().animateCss('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
                     // $(item.target).removeClass('animated fadeInUp')

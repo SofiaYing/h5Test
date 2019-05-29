@@ -10,10 +10,10 @@
         FX.utils.inherit(FXInterface, Animate);
 
         // if (!window.IntersectionObserver) {
-        var s = document.createElement('script');
-        s.src = 'https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver';
-        s.async = true;
-        document.head.appendChild(s);
+        // var s = document.createElement('script');
+        // s.src = 'https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver';
+        // s.async = true;
+        // document.head.appendChild(s);
         // }
 
         //组件初始化

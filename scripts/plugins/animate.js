@@ -66,8 +66,8 @@
                 animateCss: function(animationName) {
                     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
                     $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+                        // e.stopPropagation();
                         $(this).removeClass('animated ' + animationName);
-
                     });
                 }
             });
@@ -100,7 +100,7 @@
 
                     // -webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0);
                     // document.body.style.setProperty('--translateY', transformH)
-                    $(item.target).parent().css({
+                    $(item.target).find('img').css({
                         "animatiton-duration": value.animations.playTime + 's',
                         "-webkit-animation-duration": value.animations.playTime + 's',
                         // "height": clientH + 'px'
@@ -110,7 +110,7 @@
                     // $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
 
                     // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).parent().animateCss('fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).find('img').animateCss('fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
                     // $(item.target).removeClass('animated fadeInUp')

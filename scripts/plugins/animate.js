@@ -40,10 +40,10 @@
                     } else if (item.type.charAt(item.type.length - 1) === '1' && clickAnimationCount === 0) {
                         //单击动画 绑定单击事件
                         $(animationDiv[0]).on('click', function() {
-                            console.log('1')
-                            $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
-                        })
-                        intersectionObserverClickAnimation.observe(animationDiv[0])
+                                console.log('1')
+                                $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
+                            })
+                            // intersectionObserverClickAnimation.observe(animationDiv[0])
                         clickAnimationCount += 1
                     }
                 })

@@ -40,10 +40,10 @@
                     } else if (item.type.charAt(item.type.length - 1) === '1' && clickAnimationCount === 0) {
                         //单击动画 绑定单击事件
                         $(animationDiv[0]).on('click', function() {
-                                console.log('1')
-                                $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
-                            })
-                            // intersectionObserverClickAnimation.observe(animationDiv[0])
+                            console.log('1')
+                            $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
+                        })
+                        intersectionObserverClickAnimation.observe(animationDiv[0])
                         clickAnimationCount += 1
                     }
                 })
@@ -72,12 +72,14 @@
             });
         })(jQuery);
 
+
         // 监听视窗：进入可视窗口单击可触发动画
         var intersectionObserverClickAnimation = new IntersectionObserver((entries) => {
             entries.forEach((item) => {
                 if (!item.isIntersecting) {
                     var inputNode = $(item.target).parent().children('input')
                     var value = animationDataProcess(inputNode)
+
                     $(item.target).removeClass('animated fadeOut') // value.animations.effect
                 }
             })
@@ -95,10 +97,10 @@
                     console.log('inputValue', value)
                     $(item.target).parent().css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
                         // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).parent().animateCss('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).parent().animateCss('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
-                    // $(item.target).removeClass('animated fadeInUpBig')
+                    // $(item.target).removeClass('animated fadeInUp')
                 }
             })
         });

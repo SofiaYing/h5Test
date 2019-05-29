@@ -95,6 +95,10 @@
                     var inputNode = $(item.target).parent().children('input')
                     var value = animationDataProcess(inputNode)
                     console.log('inputValue', value)
+                    var clientH = document.documentElement.clientHeight;
+                    var scrollH = $(item.target).scrollTop()
+                    var offsetH = $(item.target).offset().top
+                    console.log(clientH, scrollH, offsetH)
                     $(item.target).parent().css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
                         // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
                     $(item.target).parent().animateCss('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')

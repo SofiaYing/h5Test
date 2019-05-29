@@ -8,6 +8,10 @@
  * Copyright (c) 2018 Daniel Eden
  */
 
+ :root {
+    --tranlateY: 0px;
+}
+
 @-webkit-keyframes bounce {
     from,
     20%,
@@ -1413,6 +1417,8 @@
         opacity: 0;
         -webkit-transform: translate3d(0, 100%, 0);
         transform: translate3d(0, 100%, 0);
+        /* -webkit-transform: translateY(var(--tranlateY));
+        transform: translateY(var(--tranlateY)); */
     }
     to {
         opacity: 1;
@@ -1426,6 +1432,8 @@
         opacity: 0;
         -webkit-transform: translate3d(0, 100%, 0);
         transform: translate3d(0, 100%, 0);
+        /* -webkit-transform: translateY(var(--tranlateY));
+        transform: translateY(var(--tranlateY)); */
     }
     to {
         opacity: 1;

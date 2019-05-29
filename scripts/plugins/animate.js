@@ -39,12 +39,12 @@
                         autoAnimationCount += 1
                     } else if (item.type.charAt(item.type.length - 1) === '1' && clickAnimationCount === 0) {
                         //单击动画 绑定单击事件
-                        $(animationDiv[0]).on('click', function() {
-                            console.log('1')
-                            $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
-                        })
-                        intersectionObserverClickAnimation.observe(animationDiv[0])
-                        clickAnimationCount += 1
+                        // $(animationDiv[0]).on('click', function() {
+                        //     console.log('1')
+                        //     $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
+                        // })
+                        // intersectionObserverClickAnimation.observe(animationDiv[0])
+                        // clickAnimationCount += 1
                     }
                 })
             })
@@ -60,13 +60,13 @@
         Animate.prototype.destroy = function() {
 
         };
-
-        (function($) {
+        var flag = true(function($) {
             $.fn.extend({
                 animateCss: function(animationName) {
                     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
                     $(this).addClass('animated ' + animationName).one(animationEnd, function() {
                         $(this).removeClass('animated ' + animationName);
+                        flag = false
                     });
                 }
             });
@@ -105,10 +105,11 @@
                         // "height": clientH + 'px'
                     })
 
-                    $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
+
+                    // $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
 
                     // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    // $(item.target).parent().animateCss('fadeInLeft ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).animateCss('fadeInLeft ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
                     // $(item.target).removeClass('animated fadeInUp')

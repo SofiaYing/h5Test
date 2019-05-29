@@ -40,10 +40,10 @@
                     } else if (item.type.charAt(item.type.length - 1) === '1' && clickAnimationCount === 0) {
                         //单击动画 绑定单击事件
                         $(animationDiv[0]).on('click', function() {
-                            console.log('1')
-                            $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
-                        })
-                        intersectionObserverClickAnimation.observe(animationDiv[0])
+                                console.log('1')
+                                $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
+                            })
+                            // intersectionObserverClickAnimation.observe(animationDiv[0])
                         clickAnimationCount += 1
                     }
                 })
@@ -92,19 +92,28 @@
             entries.forEach((item) => {
                 console.log(item)
                 if (item.intersectionRatio > 0) {
+                    // alert("1" + $(item.target).parent().attr('class'))
                     var inputNode = $(item.target).parent().children('input')
                     var value = animationDataProcess(inputNode)
                     console.log('inputValue', value)
                     var clientH = document.documentElement.clientHeight;
                     var scrollH = $(item.target).scrollTop()
                     var offsetH = $(item.target).offset().top
-                    console.log(clientH, scrollH, offsetH)
-                    $(item.target).parent().css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
+                    var transformH = (clientH - offsetH) * 0.9
+                    console.log(clientH, scrollH, offsetH, transformH)
+                        //         -webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0);
+                    $(item.target).parent().css({
+                            "animatiton-duration": value.animations.playTime + 's',
+                            "-webkit-animation-duration": value.animations.playTime + 's',
+                            // "transform": transformH + 'px',
+                        })
                         // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).parent().animateCss('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).parent().animateCss('fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
+                        // alert("2" + $(item.target).parent().attr('class'))
 
                 } else {
                     // $(item.target).removeClass('animated fadeInUp')
+                    // alert("3" + $(item.target).parent().attr('class'))
                 }
             })
         });

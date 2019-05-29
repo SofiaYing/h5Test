@@ -102,13 +102,13 @@
                     $(item.target).parent().css({
                         "animatiton-duration": value.animations.playTime + 's',
                         "-webkit-animation-duration": value.animations.playTime + 's',
-                        "height": clientH + 'px'
+                        // "height": clientH + 'px'
                     })
 
-                    // $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
 
                     // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).parent().animateCss('fadeInLeft ' + 'delay-' + value.animations.playDelay + 's')
+                    // $(item.target).parent().animateCss('fadeInLeft ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
                     // $(item.target).removeClass('animated fadeInUp')
@@ -130,6 +130,52 @@
                 // type: "toAppearance-0"
                 // uid: "0-0"
             return valueObject
+        }
+
+
+        function fall(demo, data, type, playDelay, playTime) {
+            var fallRadio = 3;
+            var t = 0;
+            var l = 0;
+            var w = 0;
+            var h = 0;
+            var t1 = 0;
+            var l1 = 0;
+            var w1 = 0;
+            var h1 = 0;
+            if (type.search("fromAppearance") !== -1) {
+                w = data.spaceW;
+                h = data.spaceH;
+                l = data.itemLeft;
+                t = data.itemTop;
+                w1 = 0;
+                h1 = 0;
+                l1 = data.itemLeft + data.spaceW / 2;
+                t1 = data.itemTop + data.spaceH / 2;
+                demo.animate({ left: l + "px", top: t + "px", width: w + "px", height: h + "px", opacity: 1.0 }, { duration: 1, easing: "linear", queue: "x1" });
+                demo.animate({ left: l1 + "px", top: t1 + "px", width: w1 + "px", height: h1 + "px", opacity: 0.0 }, {
+                    duration: playTime * timePlus,
+                    easing: "linear",
+                    queue: "x1",
+                    callback: PlayInteractiveInAnimation(demo)
+                });
+            } else if (type.search("toAppearance") !== -1) {
+                w = data.spaceW * fallRadio;
+                h = data.spaceH * fallRadio;
+                l = data.itemLeft - data.spaceW * (fallRadio - 1) / 2;
+                t = data.itemTop - data.spaceH * (fallRadio - 1) / 2;
+                w1 = data.spaceW;
+                h1 = data.spaceH;
+                l1 = data.itemLeft;
+                t1 = data.itemTop;
+                demo.animate({ left: l + "px", top: t + "px", width: w + "px", height: h + "px", opacity: 0.0 }, { duration: 1, easing: "linear", queue: "x1" });
+                demo.animate({ left: l1 + "px", top: t1 + "px", width: w1 + "px", height: h1 + "px", opacity: 1.0 }, {
+                    duration: playTime * timePlus,
+                    easing: "linear",
+                    queue: "x1",
+                    callback: PlayInteractiveInAnimation(demo)
+                });
+            }
         }
 
         return new Animate(id, option);

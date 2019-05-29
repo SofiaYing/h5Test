@@ -1468,6 +1468,7 @@
 .fadeInUpBig {
     -webkit-animation-name: fadeInUpBig;
     animation-name: fadeInUpBig;
+    animation-fill-mode: both;
 }
 
 @-webkit-keyframes fadeOut {

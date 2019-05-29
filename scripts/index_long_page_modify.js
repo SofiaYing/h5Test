@@ -1,9 +1,3 @@
-// function addArrowClickListener(arrow) {
-//     arrow.addEventListener("click", function() {
-//         mySwiper.slideNext();
-//     }, false);
-// }
-
 window.onloadOver = function() {
     //长页面适配
     window.sizeAdjustor.adjustContainer();
@@ -17,17 +11,6 @@ window.onloadOver = function() {
     bgmController.controlAutoBgm(0, undefined);
 
     window.fx = new FXH5(fx_options);
-
-    // (function() {
-    //     var arrow = document.getElementById("floatArrow");
-    //     if (showSwipIcon) addArrowClickListener(arrow);
-    //     else {
-    //         arrow.style.display = "none";
-    //     }
-
-    // })();
-
-
 };
 
 

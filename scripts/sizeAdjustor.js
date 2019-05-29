@@ -90,6 +90,9 @@ SizeAdjustor.prototype = {
         this.finalLeft = clientW / 2 - this.finalSize.width / 2;
         if (adjustType === "longPageAdjust") {
             this.finalTop = 0;
+
+            // var content = 'width=320, initial-scale=' + pageScale + ', maximum-scale=' + pageScale + ',minimum-scale='+ pageScale + ',user-scalable=no';
+            // document.getElementById('webviewport').setAttribute('content', content);
         } else {
             this.finalTop = clientH / 2 - this.finalSize.height / 2;
         }

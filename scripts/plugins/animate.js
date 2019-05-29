@@ -40,6 +40,7 @@
                     } else if (item.type.charAt(item.type.length - 1) === '1' && clickAnimationCount === 0) {
                         //单击动画 绑定单击事件
                         $(animationDiv[0]).on('click', function() {
+                            console.log('1')
                             $(this).addClass('animated fadeOut ' + 'delay-' + item.playDelay + 's')
                         })
                         intersectionObserverClickAnimation.observe(animationDiv[0])
@@ -88,16 +89,16 @@
         var intersectionObserverAutoAnimation = new IntersectionObserver((entries) => {
             entries.forEach((item) => {
                 console.log(item)
-                if (item.isIntersecting) {
+                if (item.intersectionRatio > 0) {
                     var inputNode = $(item.target).parent().children('input')
                     var value = animationDataProcess(inputNode)
                     console.log('inputValue', value)
-                    $(item.target).css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
-                        // $(item.target).addClass('animated slideInUp ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).animateCss('animated fadeIn ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).parent().css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
+                    $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
+                        // $(item.target).parent().animateCss('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
 
                 } else {
-                    $(item.target).removeClass('animated fadeIn')
+                    // $(item.target).removeClass('animated fadeInUpBig')
                 }
             })
         });

@@ -94,12 +94,11 @@
                     console.log('inputValue', value)
                     $(item.target).css({ "animatiton-duration": value.animations.playTime + 's', "-webkit-animation-duration": value.animations.playTime + 's' })
                         // $(item.target).addClass('animated slideInUp ' + 'delay-' + value.animations.playDelay + 's')
-                    $(item.target).animateCss('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
+                    $(item.target).animateCss('animated fadeIn ' + 'delay-' + value.animations.playDelay + 's')
 
+                } else {
+                    $(item.target).removeClass('animated fadeIn')
                 }
-                // else {
-                //     $(item.target).removeClass('animated fadeIn')
-                // }
             })
         });
 

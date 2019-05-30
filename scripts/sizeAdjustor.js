@@ -88,14 +88,12 @@ SizeAdjustor.prototype = {
         var clientW = document.documentElement.clientWidth;
         var container = document.getElementById("swiper_container");
         this.finalLeft = clientW / 2 - this.finalSize.width / 2;
-        if (adjustType === "longPageAdjust") {
-            this.finalTop = 0;
-
-            // var content = 'width=320, initial-scale=' + pageScale + ', maximum-scale=' + pageScale + ',minimum-scale='+ pageScale + ',user-scalable=no';
-            // document.getElementById('webviewport').setAttribute('content', content);
-        } else {
-            this.finalTop = clientH / 2 - this.finalSize.height / 2;
-        }
+        // if (adjustType === "longPageAdjust") {
+        //     this.finalTop = 0;
+        // } else {
+        //     this.finalTop = clientH / 2 - this.finalSize.height / 2;
+        // }
+        this.finalTop = clientH / 2 - this.finalSize.height / 2;
         container.style.cssText +=
             "display:block; transform-origin:left top; transform:scale(" + this.scaleX + "," + this.scaleY + "); left:" + this.finalLeft +
             "px; top:" + this.finalTop + "px";

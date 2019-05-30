@@ -59,7 +59,6 @@
                 animateCss: function(animationName) {
                     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
                     $(this).addClass('animated ' + animationName).one(animationEnd, function() {
-                        // e.stopPropagation();
                         $(this).removeClass('animated ' + animationName);
                     });
                 }
@@ -107,7 +106,8 @@
 
         function animationDataProcess(node) {
             var valueObject = {};
-            var valueTemp = eval('(' + node[0].value + ')')
+            // var valueTemp = eval('(' + node[0].value + ')')
+            var valueTemp = JSON.parse(node[0].value)
             var animations = valueTemp.states[0].animations
             $.each(animations, function(index, item) {
                     valueObject.animations = item

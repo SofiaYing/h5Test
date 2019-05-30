@@ -6,6 +6,7 @@
 (function() {
     window.FX = window.FX || {};
     var paths = [
+            'observe.polyfill.min.js',
             'core/interface.js',
             'core/fx.js',
             'core/utils.js',

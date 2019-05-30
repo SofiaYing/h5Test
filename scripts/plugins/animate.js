@@ -9,13 +9,6 @@
         // 继承接口
         FX.utils.inherit(FXInterface, Animate);
 
-        // if (!window.IntersectionObserver) {
-        // var s = document.createElement('script');
-        // s.src = 'https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver';
-        // s.async = true;
-        // document.head.appendChild(s);
-        // }
-
         //组件初始化
         Animate.prototype.init = function(id, option) {
             var animationNodes = $("div[title='Animation']")
@@ -96,19 +89,13 @@
                     var inputNode = $(item.target).parent().children('input')
                     var value = animationDataProcess(inputNode)
                     console.log('inputValue', value)
-                    var clientH = document.documentElement.clientHeight;
 
-                    // -webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0);
-                    // document.body.style.setProperty('--translateY', transformH)
                     $(item.target).find('img').css({
                         "animatiton-duration": value.animations.playTime + 's',
                         "-webkit-animation-duration": value.animations.playTime + 's',
-                        // "height": clientH + 'px'
                     })
 
-
                     // $(item.target).parent().addClass('animated fadeInUp ' + 'delay-' + value.animations.playDelay + 's')
-
                     // $(item.target).addClass('animated fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
                     $(item.target).find('img').animateCss('fadeInUpBig ' + 'delay-' + value.animations.playDelay + 's')
 
